@@ -3,6 +3,7 @@
 Created on Thu May 17 20:41:39 2018
 
 @author: Nicolás Adrián Rodríguez Linares
+El objetivo de este código es obtener el diagrama de Bode asociado a un circuito electrónico
 """
 
 import numpy as np
