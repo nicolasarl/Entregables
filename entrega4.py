@@ -3,7 +3,6 @@
 Created on Thu May 17 20:41:39 2018
 
 @author: Nicolás Adrián Rodríguez Linares
-El objetivo de este código es obtener el diagrama de Bode asociado a un circuito electrónico
 """
 
 import numpy as np
@@ -11,9 +10,9 @@ import matplotlib.pyplot as plt
 
 #Parámetros del circuito:
 
-R = 9 #Resistencia en ohmios
-L = 0.1 #Inductancia en Henrios
-C = 0.00001 #Capacidad en faradios
+R = 8.2 #Resistencia en Ohmios
+L = 1e-3 #Inductancia en Henrios
+C =  10e-6#Capacidad en Faradios
 
 fi = 50 #Frecuencia angular inicial en rad/s
 ff =  1e6 #Frecuencia angular final en rad/se
@@ -28,11 +27,13 @@ for i in range(len(f)):
     phase[i] = ((np.arctan2(tf.imag,tf.real)*360)/(2*np.pi))#Fase en grados 
    
 fig,ax = plt.subplots(2,1)
-ax[0].plot(10*np.log10(f),20*np.log10(gain),'b')
+ax[0].plot(f,20*np.log10(gain),'b')
 ax[0].set_ylabel('Ganancia [dB]')
 ax[0].set_title('Diagrama magnitud')
-ax[1].plot(10*np.log10(f),phase,'b')
+ax[0].set_xscale('log')
+ax[1].plot(f,phase,'b')
 ax[1].set_xlabel('Frecuencia [Hz]')
 ax[1].set_ylabel('Fase [º]')
+ax[1].set_xscale('log')
 ax[1].set_title('Diagrama fase')
 plt.show()
